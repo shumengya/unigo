@@ -4,5 +4,5 @@
 *.png binary
 
 # tree-sitter generate 生成的文件
-editors/tree-sitter-garnet/src/** linguist-generated
-editors/vscode/syntaxes/garnet.tmLanguage.json linguist-generated
+editors/tree-sitter-unigo/src/** linguist-generated
+editors/vscode/syntaxes/unigo.tmLanguage.json linguist-generated

@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "Garnet",
-  "scopeName": "source.garnet",
+  "name": "UniGo",
+  "scopeName": "source.unigo",
   "fileTypes": [
-    "gn"
+    "ug"
   ],
   "patterns": [
     {
@@ -87,15 +87,15 @@
           "begin": "//",
           "beginCaptures": {
             "0": {
-              "name": "punctuation.definition.comment.garnet"
+              "name": "punctuation.definition.comment.unigo"
             }
           },
           "end": "$",
-          "name": "comment.line.double-slash.garnet",
+          "name": "comment.line.double-slash.unigo",
           "patterns": [
             {
               "match": "(?<![\\p{L}\\p{Nd}_])(?:TODO|FIXME|XXX|NOTE|HACK)(?![\\p{L}\\p{Nd}_])",
-              "name": "keyword.codetag.notation.garnet"
+              "name": "keyword.codetag.notation.unigo"
             }
           ]
         }
@@ -107,24 +107,24 @@
           "begin": "\"",
           "beginCaptures": {
             "0": {
-              "name": "punctuation.definition.string.begin.garnet"
+              "name": "punctuation.definition.string.begin.unigo"
             }
           },
           "end": "\"|$",
           "endCaptures": {
             "0": {
-              "name": "punctuation.definition.string.end.garnet"
+              "name": "punctuation.definition.string.end.unigo"
             }
           },
-          "name": "string.quoted.double.garnet",
+          "name": "string.quoted.double.unigo",
           "patterns": [
             {
               "match": "\\\\[ntr\\\\\"]",
-              "name": "constant.character.escape.garnet"
+              "name": "constant.character.escape.unigo"
             },
             {
               "match": "\\\\.",
-              "name": "invalid.illegal.unknown-escape.garnet"
+              "name": "invalid.illegal.unknown-escape.unigo"
             }
           ]
         },
@@ -132,20 +132,20 @@
           "begin": "`",
           "beginCaptures": {
             "0": {
-              "name": "punctuation.definition.string.begin.garnet"
+              "name": "punctuation.definition.string.begin.unigo"
             }
           },
           "end": "`",
           "endCaptures": {
             "0": {
-              "name": "punctuation.definition.string.end.garnet"
+              "name": "punctuation.definition.string.end.unigo"
             }
           },
-          "name": "string.quoted.other.raw.garnet"
+          "name": "string.quoted.other.raw.unigo"
         },
         {
           "match": "'[^'\\n]*'?",
-          "name": "invalid.illegal.character-literal.garnet"
+          "name": "invalid.illegal.character-literal.unigo"
         }
       ]
     },
@@ -153,11 +153,11 @@
       "patterns": [
         {
           "match": "(?<![\\p{L}\\p{Nd}_])[0-9]+(?:\\.[0-9]+(?:[eE][+-]?[0-9]+)?|[eE][+-]?[0-9]+)(?![\\p{L}\\p{Nd}_])",
-          "name": "constant.numeric.float.garnet"
+          "name": "constant.numeric.float.unigo"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])[0-9]+(?![\\p{L}\\p{Nd}_])",
-          "name": "constant.numeric.integer.garnet"
+          "name": "constant.numeric.integer.unigo"
         }
       ]
     },
@@ -165,10 +165,10 @@
       "match": "(?<![\\p{L}\\p{Nd}_])(package)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)",
       "captures": {
         "1": {
-          "name": "keyword.other.package.garnet"
+          "name": "keyword.other.package.unigo"
         },
         "2": {
-          "name": "entity.name.namespace.garnet"
+          "name": "entity.name.namespace.unigo"
         }
       }
     },
@@ -176,16 +176,16 @@
       "match": "(?<![\\p{L}\\p{Nd}_])(import)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s+(from)(?![\\p{L}\\p{Nd}_])\\s*(\"[^\"\\n]*\")",
       "captures": {
         "1": {
-          "name": "keyword.other.import.garnet"
+          "name": "keyword.other.import.unigo"
         },
         "2": {
-          "name": "entity.name.namespace.garnet"
+          "name": "entity.name.namespace.unigo"
         },
         "3": {
-          "name": "keyword.other.from.garnet"
+          "name": "keyword.other.from.unigo"
         },
         "4": {
-          "name": "string.quoted.double.garnet"
+          "name": "string.quoted.double.unigo"
         }
       }
     },
@@ -193,22 +193,22 @@
       "begin": "(?<![\\p{L}\\p{Nd}_])(struct)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(\\{)",
       "beginCaptures": {
         "1": {
-          "name": "storage.type.struct.garnet"
+          "name": "storage.type.struct.unigo"
         },
         "2": {
-          "name": "entity.name.type.garnet"
+          "name": "entity.name.type.unigo"
         },
         "3": {
-          "name": "punctuation.section.braces.begin.garnet"
+          "name": "punctuation.section.braces.begin.unigo"
         }
       },
       "end": "\\}",
       "endCaptures": {
         "0": {
-          "name": "punctuation.section.braces.end.garnet"
+          "name": "punctuation.section.braces.end.unigo"
         }
       },
-      "name": "meta.struct.garnet",
+      "name": "meta.struct.unigo",
       "patterns": [
         {
           "include": "#comments"
@@ -217,13 +217,13 @@
           "match": "(?<![\\p{L}\\p{Nd}_])([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
           "captures": {
             "1": {
-              "name": "variable.other.property.garnet"
+              "name": "variable.other.property.unigo"
             },
             "2": {
-              "name": "punctuation.separator.type.garnet"
+              "name": "punctuation.separator.type.unigo"
             },
             "3": {
-              "name": "meta.type.garnet",
+              "name": "meta.type.unigo",
               "patterns": [
                 {
                   "include": "#type-expression"
@@ -241,22 +241,22 @@
       "begin": "(?<![\\p{L}\\p{Nd}_])(interface)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(\\{)",
       "beginCaptures": {
         "1": {
-          "name": "storage.type.interface.garnet"
+          "name": "storage.type.interface.unigo"
         },
         "2": {
-          "name": "entity.name.type.garnet"
+          "name": "entity.name.type.unigo"
         },
         "3": {
-          "name": "punctuation.section.braces.begin.garnet"
+          "name": "punctuation.section.braces.begin.unigo"
         }
       },
       "end": "\\}",
       "endCaptures": {
         "0": {
-          "name": "punctuation.section.braces.end.garnet"
+          "name": "punctuation.section.braces.end.unigo"
         }
       },
-      "name": "meta.interface.garnet",
+      "name": "meta.interface.unigo",
       "patterns": [
         {
           "include": "#comments"
@@ -273,29 +273,29 @@
       "begin": "(?<![\\p{L}\\p{Nd}_])(enum)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(\\{)",
       "beginCaptures": {
         "1": {
-          "name": "storage.type.enum.garnet"
+          "name": "storage.type.enum.unigo"
         },
         "2": {
-          "name": "entity.name.type.garnet"
+          "name": "entity.name.type.unigo"
         },
         "3": {
-          "name": "punctuation.section.braces.begin.garnet"
+          "name": "punctuation.section.braces.begin.unigo"
         }
       },
       "end": "\\}",
       "endCaptures": {
         "0": {
-          "name": "punctuation.section.braces.end.garnet"
+          "name": "punctuation.section.braces.end.unigo"
         }
       },
-      "name": "meta.enum.garnet",
+      "name": "meta.enum.unigo",
       "patterns": [
         {
           "include": "#comments"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])[\\p{L}_][\\p{L}\\p{Nd}_]*(?![\\p{L}\\p{Nd}_])",
-          "name": "variable.other.enummember.garnet"
+          "name": "variable.other.enummember.unigo"
         },
         {
           "include": "#punctuation"
@@ -306,25 +306,25 @@
       "begin": "(?<![\\p{L}\\p{Nd}_])(func)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(\\()",
       "beginCaptures": {
         "1": {
-          "name": "storage.type.function.garnet"
+          "name": "storage.type.function.unigo"
         },
         "2": {
-          "name": "entity.name.function.garnet"
+          "name": "entity.name.function.unigo"
         },
         "3": {
-          "name": "punctuation.definition.parameters.begin.garnet"
+          "name": "punctuation.definition.parameters.begin.unigo"
         }
       },
       "end": "(\\))(?:\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*)))?",
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.parameters.end.garnet"
+          "name": "punctuation.definition.parameters.end.unigo"
         },
         "2": {
-          "name": "punctuation.separator.type.garnet"
+          "name": "punctuation.separator.type.unigo"
         },
         "3": {
-          "name": "meta.type.garnet",
+          "name": "meta.type.unigo",
           "patterns": [
             {
               "include": "#type-expression"
@@ -332,7 +332,7 @@
           ]
         }
       },
-      "name": "meta.function.garnet",
+      "name": "meta.function.unigo",
       "patterns": [
         {
           "include": "#comments"
@@ -341,13 +341,13 @@
           "match": "(?<![\\p{L}\\p{Nd}_])([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
           "captures": {
             "1": {
-              "name": "variable.parameter.garnet"
+              "name": "variable.parameter.unigo"
             },
             "2": {
-              "name": "punctuation.separator.type.garnet"
+              "name": "punctuation.separator.type.unigo"
             },
             "3": {
-              "name": "meta.type.garnet",
+              "name": "meta.type.unigo",
               "patterns": [
                 {
                   "include": "#type-expression"
@@ -358,7 +358,7 @@
         },
         {
           "match": ",",
-          "name": "punctuation.separator.comma.garnet"
+          "name": "punctuation.separator.comma.unigo"
         }
       ]
     },
@@ -366,16 +366,16 @@
       "match": "(?<![\\p{L}\\p{Nd}_])(newtype|alias)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(=)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
       "captures": {
         "1": {
-          "name": "storage.type.garnet"
+          "name": "storage.type.unigo"
         },
         "2": {
-          "name": "entity.name.type.garnet"
+          "name": "entity.name.type.unigo"
         },
         "3": {
-          "name": "keyword.operator.assignment.garnet"
+          "name": "keyword.operator.assignment.unigo"
         },
         "4": {
-          "name": "meta.type.garnet",
+          "name": "meta.type.unigo",
           "patterns": [
             {
               "include": "#type-expression"
@@ -390,16 +390,16 @@
           "match": "(?<![\\p{L}\\p{Nd}_])(var|const)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
           "captures": {
             "1": {
-              "name": "storage.type.garnet"
+              "name": "storage.type.unigo"
             },
             "2": {
-              "name": "variable.other.declaration.garnet"
+              "name": "variable.other.declaration.unigo"
             },
             "3": {
-              "name": "punctuation.separator.type.garnet"
+              "name": "punctuation.separator.type.unigo"
             },
             "4": {
-              "name": "meta.type.garnet",
+              "name": "meta.type.unigo",
               "patterns": [
                 {
                   "include": "#type-expression"
@@ -412,31 +412,31 @@
           "begin": "(?<![\\p{L}\\p{Nd}_])(var)(?![\\p{L}\\p{Nd}_])\\s*(\\()",
           "beginCaptures": {
             "1": {
-              "name": "storage.type.garnet"
+              "name": "storage.type.unigo"
             },
             "2": {
-              "name": "punctuation.section.parens.begin.garnet"
+              "name": "punctuation.section.parens.begin.unigo"
             }
           },
           "end": "\\)",
           "endCaptures": {
             "0": {
-              "name": "punctuation.section.parens.end.garnet"
+              "name": "punctuation.section.parens.end.unigo"
             }
           },
-          "name": "meta.var.multiple.garnet",
+          "name": "meta.var.multiple.unigo",
           "patterns": [
             {
               "match": "(?<![\\p{L}\\p{Nd}_])([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
               "captures": {
                 "1": {
-                  "name": "variable.other.declaration.garnet"
+                  "name": "variable.other.declaration.unigo"
                 },
                 "2": {
-                  "name": "punctuation.separator.type.garnet"
+                  "name": "punctuation.separator.type.unigo"
                 },
                 "3": {
-                  "name": "meta.type.garnet",
+                  "name": "meta.type.unigo",
                   "patterns": [
                     {
                       "include": "#type-expression"
@@ -447,7 +447,7 @@
             },
             {
               "match": ",",
-              "name": "punctuation.separator.comma.garnet"
+              "name": "punctuation.separator.comma.unigo"
             }
           ]
         }
@@ -457,10 +457,10 @@
       "match": "(?<![\\p{L}\\p{Nd}_])(else)(?![\\p{L}\\p{Nd}_])\\s+(return)(?![\\p{L}\\p{Nd}_])",
       "captures": {
         "1": {
-          "name": "keyword.control.garnet"
+          "name": "keyword.control.unigo"
         },
         "2": {
-          "name": "keyword.control.flow.garnet"
+          "name": "keyword.control.flow.unigo"
         }
       }
     },
@@ -468,43 +468,43 @@
       "patterns": [
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:if|elif|else|switch|case|default)(?![\\p{L}\\p{Nd}_])",
-          "name": "keyword.control.garnet"
+          "name": "keyword.control.unigo"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:while|for)(?![\\p{L}\\p{Nd}_])",
-          "name": "keyword.control.loop.garnet"
+          "name": "keyword.control.loop.unigo"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:return)(?![\\p{L}\\p{Nd}_])",
-          "name": "keyword.control.flow.garnet"
+          "name": "keyword.control.flow.unigo"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:package|import|from)(?![\\p{L}\\p{Nd}_])",
-          "name": "keyword.other.import.garnet"
+          "name": "keyword.other.import.unigo"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:var|const)(?![\\p{L}\\p{Nd}_])",
-          "name": "storage.type.garnet"
+          "name": "storage.type.unigo"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:func)(?![\\p{L}\\p{Nd}_])",
-          "name": "storage.type.function.garnet"
+          "name": "storage.type.function.unigo"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:enum|struct|interface|newtype|alias|map)(?![\\p{L}\\p{Nd}_])",
-          "name": "storage.type.garnet"
+          "name": "storage.type.unigo"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:true|false)(?![\\p{L}\\p{Nd}_])",
-          "name": "constant.language.boolean.garnet"
+          "name": "constant.language.boolean.unigo"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:nil)(?![\\p{L}\\p{Nd}_])",
-          "name": "constant.language.null.garnet"
+          "name": "constant.language.null.unigo"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:fallthrough|iota|class|new|extends|implements|type)(?![\\p{L}\\p{Nd}_])",
-          "name": "invalid.illegal.forbidden.garnet"
+          "name": "invalid.illegal.forbidden.unigo"
         }
       ]
     },
@@ -512,16 +512,16 @@
       "match": "(?<![\\p{L}\\p{Nd}_])(case)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(\\.)\\s*([\\p{L}_][\\p{L}\\p{Nd}_]*)",
       "captures": {
         "1": {
-          "name": "keyword.control.garnet"
+          "name": "keyword.control.unigo"
         },
         "2": {
-          "name": "entity.name.type.enum.garnet"
+          "name": "entity.name.type.enum.unigo"
         },
         "3": {
-          "name": "punctuation.accessor.garnet"
+          "name": "punctuation.accessor.unigo"
         },
         "4": {
-          "name": "variable.other.enummember.garnet"
+          "name": "variable.other.enummember.unigo"
         }
       }
     },
@@ -529,13 +529,13 @@
       "match": "(?<![\\p{L}\\p{Nd}_])([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
       "captures": {
         "1": {
-          "name": "variable.other.garnet"
+          "name": "variable.other.unigo"
         },
         "2": {
-          "name": "punctuation.separator.type.garnet"
+          "name": "punctuation.separator.type.unigo"
         },
         "3": {
-          "name": "meta.type.garnet",
+          "name": "meta.type.unigo",
           "patterns": [
             {
               "include": "#type-expression"
@@ -548,7 +548,7 @@
       "match": "(?<![\\p{L}\\p{Nd}_])(?!(?:package|import|from|var|const|func|if|else|elif|while|for|switch|case|default|enum|struct|interface|newtype|alias|return|map|true|false|nil)(?![\\p{L}\\p{Nd}_]))([\\p{L}_][\\p{L}\\p{Nd}_]*)(?=\\{)",
       "captures": {
         "1": {
-          "name": "entity.name.type.garnet"
+          "name": "entity.name.type.unigo"
         }
       }
     },
@@ -556,10 +556,10 @@
       "match": "([{,])\\s*([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(?==(?!=))",
       "captures": {
         "1": {
-          "name": "punctuation.separator.garnet"
+          "name": "punctuation.separator.unigo"
         },
         "2": {
-          "name": "variable.other.property.garnet"
+          "name": "variable.other.property.unigo"
         }
       }
     },
@@ -569,7 +569,7 @@
           "match": "(?<![\\p{L}\\p{Nd}_])(delete|len|cap|append|copy|panic|print|println|make|min|max|clear)\\s*(?=\\()",
           "captures": {
             "1": {
-              "name": "support.function.builtin.garnet"
+              "name": "support.function.builtin.unigo"
             }
           }
         },
@@ -577,7 +577,7 @@
           "match": "(?<![\\p{L}\\p{Nd}_])(bool|byte|rune|string|error|any|int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|uintptr|float32|float64|complex64|complex128)\\s*(?=\\()",
           "captures": {
             "1": {
-              "name": "support.type.garnet"
+              "name": "support.type.unigo"
             }
           }
         },
@@ -585,10 +585,10 @@
           "match": "(\\.)\\s*([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(?=\\()",
           "captures": {
             "1": {
-              "name": "punctuation.accessor.garnet"
+              "name": "punctuation.accessor.unigo"
             },
             "2": {
-              "name": "entity.name.function.member.garnet"
+              "name": "entity.name.function.member.unigo"
             }
           }
         },
@@ -596,7 +596,7 @@
           "match": "(?<![\\p{L}\\p{Nd}_])(?!(?:package|import|from|var|const|func|if|else|elif|while|for|switch|case|default|enum|struct|interface|newtype|alias|return|map|true|false|nil)(?![\\p{L}\\p{Nd}_]))([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(?=\\()",
           "captures": {
             "1": {
-              "name": "entity.name.function.garnet"
+              "name": "entity.name.function.unigo"
             }
           }
         }
@@ -606,10 +606,10 @@
       "match": "(\\.)\\s*([\\p{L}_][\\p{L}\\p{Nd}_]*)",
       "captures": {
         "1": {
-          "name": "punctuation.accessor.garnet"
+          "name": "punctuation.accessor.unigo"
         },
         "2": {
-          "name": "variable.other.property.garnet"
+          "name": "variable.other.property.unigo"
         }
       }
     },
@@ -617,41 +617,41 @@
       "patterns": [
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:map)(?![\\p{L}\\p{Nd}_])",
-          "name": "storage.type.map.garnet"
+          "name": "storage.type.map.unigo"
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])(?:bool|byte|rune|string|error|any|int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|uintptr|float32|float64|complex64|complex128)(?![\\p{L}\\p{Nd}_])",
-          "name": "support.type.garnet"
+          "name": "support.type.unigo"
         },
         {
           "match": "([\\p{L}_][\\p{L}\\p{Nd}_]*)(\\.)([\\p{L}_][\\p{L}\\p{Nd}_]*)",
           "captures": {
             "1": {
-              "name": "entity.name.namespace.garnet"
+              "name": "entity.name.namespace.unigo"
             },
             "2": {
-              "name": "punctuation.accessor.garnet"
+              "name": "punctuation.accessor.unigo"
             },
             "3": {
-              "name": "entity.name.type.garnet"
+              "name": "entity.name.type.unigo"
             }
           }
         },
         {
           "match": "(?<![\\p{L}\\p{Nd}_])[\\p{L}_][\\p{L}\\p{Nd}_]*(?![\\p{L}\\p{Nd}_])",
-          "name": "entity.name.type.garnet"
+          "name": "entity.name.type.unigo"
         },
         {
           "match": "\\*",
-          "name": "keyword.operator.pointer.garnet"
+          "name": "keyword.operator.pointer.unigo"
         },
         {
           "match": "\\[|\\]",
-          "name": "punctuation.section.brackets.garnet"
+          "name": "punctuation.section.brackets.unigo"
         },
         {
           "match": ",",
-          "name": "punctuation.separator.comma.garnet"
+          "name": "punctuation.separator.comma.unigo"
         }
       ]
     },
@@ -659,31 +659,31 @@
       "patterns": [
         {
           "match": ":=",
-          "name": "invalid.illegal.short-assign.garnet"
+          "name": "invalid.illegal.short-assign.unigo"
         },
         {
           "match": "/\\*|\\*/",
-          "name": "invalid.illegal.block-comment.garnet"
+          "name": "invalid.illegal.block-comment.unigo"
         },
         {
           "match": "\\|\\||&&|!(?!=)",
-          "name": "keyword.operator.logical.garnet"
+          "name": "keyword.operator.logical.unigo"
         },
         {
           "match": "==|!=|<=|>=|<|>",
-          "name": "keyword.operator.comparison.garnet"
+          "name": "keyword.operator.comparison.unigo"
         },
         {
           "match": "[+\\-*/%]",
-          "name": "keyword.operator.arithmetic.garnet"
+          "name": "keyword.operator.arithmetic.unigo"
         },
         {
           "match": "&",
-          "name": "keyword.operator.address.garnet"
+          "name": "keyword.operator.address.unigo"
         },
         {
           "match": "=",
-          "name": "keyword.operator.assignment.garnet"
+          "name": "keyword.operator.assignment.unigo"
         }
       ]
     },
@@ -691,49 +691,49 @@
       "patterns": [
         {
           "match": "\\(",
-          "name": "punctuation.section.parens.begin.garnet"
+          "name": "punctuation.section.parens.begin.unigo"
         },
         {
           "match": "\\)",
-          "name": "punctuation.section.parens.end.garnet"
+          "name": "punctuation.section.parens.end.unigo"
         },
         {
           "match": "\\{",
-          "name": "punctuation.section.braces.begin.garnet"
+          "name": "punctuation.section.braces.begin.unigo"
         },
         {
           "match": "\\}",
-          "name": "punctuation.section.braces.end.garnet"
+          "name": "punctuation.section.braces.end.unigo"
         },
         {
           "match": "\\[",
-          "name": "punctuation.section.brackets.begin.garnet"
+          "name": "punctuation.section.brackets.begin.unigo"
         },
         {
           "match": "\\]",
-          "name": "punctuation.section.brackets.end.garnet"
+          "name": "punctuation.section.brackets.end.unigo"
         },
         {
           "match": ",",
-          "name": "punctuation.separator.comma.garnet"
+          "name": "punctuation.separator.comma.unigo"
         },
         {
           "match": ";",
-          "name": "punctuation.terminator.statement.garnet"
+          "name": "punctuation.terminator.statement.unigo"
         },
         {
           "match": ":",
-          "name": "punctuation.separator.colon.garnet"
+          "name": "punctuation.separator.colon.unigo"
         },
         {
           "match": "\\.",
-          "name": "punctuation.accessor.garnet"
+          "name": "punctuation.accessor.unigo"
         }
       ]
     },
     "identifiers": {
       "match": "(?<![\\p{L}\\p{Nd}_])[\\p{L}_][\\p{L}\\p{Nd}_]*(?![\\p{L}\\p{Nd}_])",
-      "name": "variable.other.garnet"
+      "name": "variable.other.unigo"
     }
   }
 }

@@ -1,6 +1,6 @@
 package ast
 
-import "garnet/compiler/token"
+import "unigo/compiler/token"
 
 type Node interface {
 	Pos() token.Position

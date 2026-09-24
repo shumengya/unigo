@@ -1,6 +1,6 @@
-name = "Garnet"
-grammar = "garnet"
-path_suffixes = ["gn"]
+name = "UniGo"
+grammar = "unigo"
+path_suffixes = ["ug"]
 line_comments = ["// "]
 tab_size = 4
 hard_tabs = true

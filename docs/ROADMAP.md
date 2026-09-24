@@ -5,23 +5,23 @@
 ## 阶段一：能写出有用的程序
 
 - [ ] **遍历集合**：`for (item in items)` 形式，支持切片和 map；补 `break` / `continue`
-- [ ] **结构体方法**：让 Garnet 的结构体能实现 Go 的接口（`error`、`io.Writer`、`http.Handler`…）
+- [ ] **结构体方法**：让 UniGo 的结构体能实现 Go 的接口（`error`、`io.Writer`、`http.Handler`…）
 - [ ] **函数值**：把函数当值传递（`sort.Slice`、`http.HandleFunc` 需要）
 - [ ] **错误传递设计**：调用方能区分"失败"和"零值"
 
 ## 阶段二：工程可用
 
 - [ ] **`defer`**：资源释放
-- [ ] **行号映射**：生成 Go 代码时写 `//line a.gn:12`，让报错和 panic 指回 `.gn`
-- [ ] **读取用户的 `go.mod`**：支持第三方 Go 模块，替换写死的 `module garnetout`
-- [ ] **多文件与 Garnet 包**：一个包多个 `.gn` 文件
-- [ ] **`garnet run`**：编译并直接运行
-- [ ] **`garnet test`**：给 `.gn` 代码写单元测试
+- [ ] **行号映射**：生成 Go 代码时写 `//line a.ug:12`，让报错和 panic 指回 `.ug`
+- [ ] **读取用户的 `go.mod`**：支持第三方 Go 模块，替换写死的 `module unigoout`
+- [ ] **多文件与 UniGo 包**：一个包多个 `.ug` 文件
+- [ ] **`unigo run`**：编译并直接运行
+- [ ] **`unigo test`**：给 `.ug` 代码写单元测试
 
 ## 阶段三：工具链
 
-- [ ] **`garnet fmt`**：官方格式化器，落实"每种意思只有一种写法"
-- [ ] **语言服务器 `garnet-lsp`**：诊断 → 悬停 → 跳转 → 补全
+- [ ] **`unigo fmt`**：官方格式化器，落实"每种意思只有一种写法"
+- [ ] **语言服务器 `unigo-lsp`**：诊断 → 悬停 → 跳转 → 补全
 - [ ] **编辑器支持**：VS Code 与 Zed 已能做语法高亮，补诊断和补全
 
 ## 阶段四：语言能力

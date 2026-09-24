@@ -9,12 +9,12 @@ import (
 	"testing"
 )
 
-func TestGarnetExample(t *testing.T) {
-	srcPath := filepath.Join("..", "..", "examples", "tour", "tour.gn")
+func TestTourExample(t *testing.T) {
+	srcPath := filepath.Join("..", "..", "examples", "tour", "tour.ug")
 	if err := Build(srcPath); err != nil {
 		t.Fatal(err)
 	}
-	outPath := filepath.Join("..", "..", "examples", "tour", "garnet-out", "tour.go")
+	outPath := filepath.Join("..", "..", "examples", "tour", "unigo-out", "tour.go")
 	src, err := os.ReadFile(outPath)
 	if err != nil {
 		t.Fatal(err)
@@ -28,7 +28,7 @@ func TestGarnetExample(t *testing.T) {
 		"`json:\"id\"`",
 		"Status_ready",
 		"else if",
-		"garnetBindStudentParser",
+		"unigoBindStudentParser",
 		"type Celsius float64",
 		"type Kelvin = float64",
 		"png.BestCompression",
@@ -52,7 +52,7 @@ func TestFailFixtures(t *testing.T) {
 		t.Fatal("tests/fail 是空的")
 	}
 	for _, e := range entries {
-		if e.IsDir() || !strings.HasSuffix(e.Name(), ".gn") {
+		if e.IsDir() || !strings.HasSuffix(e.Name(), ".ug") {
 			continue
 		}
 		t.Run(e.Name(), func(t *testing.T) {
@@ -78,12 +78,12 @@ func TestFailFixtures(t *testing.T) {
 	}
 }
 
-// tests/pass 和 examples 下的每个 .gn 都必须能编译通过。
+// tests/pass 和 examples 下的每个 .ug 都必须能编译通过。
 func TestPassFixtures(t *testing.T) {
 	var paths []string
 	for _, pattern := range []string{
-		filepath.Join("..", "..", "tests", "pass", "*.gn"),
-		filepath.Join("..", "..", "examples", "*", "*.gn"),
+		filepath.Join("..", "..", "tests", "pass", "*.ug"),
+		filepath.Join("..", "..", "examples", "*", "*.ug"),
 	} {
 		found, err := filepath.Glob(pattern)
 		if err != nil {
@@ -92,7 +92,7 @@ func TestPassFixtures(t *testing.T) {
 		paths = append(paths, found...)
 	}
 	if len(paths) == 0 {
-		t.Fatal("没有找到 tests/pass 或 examples 下的 .gn 文件")
+		t.Fatal("没有找到 tests/pass 或 examples 下的 .ug 文件")
 	}
 	for _, path := range paths {
 		t.Run(filepath.Base(path), func(t *testing.T) {

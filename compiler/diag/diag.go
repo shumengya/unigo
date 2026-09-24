@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"garnet/compiler/token"
+	"unigo/compiler/token"
 )
 
 type Error struct {

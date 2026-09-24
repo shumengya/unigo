@@ -7,12 +7,12 @@ Write-Host "== 转译器测试 =="
 go test ./...
 
 Write-Host "`n== tree-sitter 语法测试 =="
-if (Test-Path editors/tree-sitter-garnet/node_modules) {
-    Push-Location editors/tree-sitter-garnet
+if (Test-Path editors/tree-sitter-unigo/node_modules) {
+    Push-Location editors/tree-sitter-unigo
     npx tree-sitter test
     Pop-Location
 } else {
-    Write-Host "跳过：先在 editors/tree-sitter-garnet 下执行 npm install"
+    Write-Host "跳过：先在 editors/tree-sitter-unigo 下执行 npm install"
 }
 
 Write-Host "`n== VS Code 高亮测试 =="

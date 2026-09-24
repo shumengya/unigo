@@ -3,5 +3,5 @@ package main;
 import fmt from "fmt";
 
 func main(){
-	fmt.Println("Hello Garnet!");
+	fmt.Println("Hello UniGo!");
 }

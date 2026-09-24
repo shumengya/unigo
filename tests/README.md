@@ -1,6 +1,6 @@
 # 语言一致性测试
 
-直接放 `.gn` 源码，由 `compiler/compile/compile_test.go` 自动扫到。
+直接放 `.ug` 源码，由 `compiler/compile/compile_test.go` 自动扫到。
 
 ## 两个目录
 
@@ -11,7 +11,7 @@
 
 ## 例子
 
-```garnet
+```unigo
 // error: 参数类型不符
 package main;
 

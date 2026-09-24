@@ -1,4 +1,4 @@
-; Garnet highlights (Zed style: later patterns take precedence over earlier ones)
+; UniGo highlights (Zed style: later patterns take precedence over earlier ones)
 
 (identifier) @variable
 

@@ -8,9 +8,9 @@ import (
 	"runtime"
 	"strings"
 
-	"garnet/compiler/check"
-	"garnet/compiler/gogen"
-	"garnet/compiler/parser"
+	"unigo/compiler/check"
+	"unigo/compiler/gogen"
+	"unigo/compiler/parser"
 )
 
 func Build(path string) error {
@@ -38,7 +38,7 @@ func BuildSource(filename string, src []byte) error {
 }
 
 func writeAndBuild(srcPath string, code []byte) error {
-	outDir := filepath.Join(filepath.Dir(srcPath), "garnet-out")
+	outDir := filepath.Join(filepath.Dir(srcPath), "unigo-out")
 	if err := os.MkdirAll(outDir, 0o755); err != nil {
 		return err
 	}
@@ -58,7 +58,7 @@ func writeAndBuild(srcPath string, code []byte) error {
 	if err := os.WriteFile(filepath.Join(outDir, base+".go"), code, 0o644); err != nil {
 		return err
 	}
-	mod := []byte("module garnetout\n\ngo 1.22\n")
+	mod := []byte("module unigoout\n\ngo 1.22\n")
 	if err := os.WriteFile(filepath.Join(outDir, "go.mod"), mod, 0o644); err != nil {
 		return err
 	}

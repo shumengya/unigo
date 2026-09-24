@@ -1,6 +1,6 @@
-# Garnet for VS Code
+# UniGo for VS Code
 
-为 Garnet（`.gn`）提供编辑器支持。
+为 UniGo（`.ug`）提供编辑器支持。
 
 ## 功能
 
@@ -17,17 +17,17 @@
 
 ```sh
 npm install
-npm run package          # 生成 garnet-lang-0.1.0.vsix
-code --install-extension garnet-lang-0.1.0.vsix
+npm run package          # 生成 unigo-lang-0.1.0.vsix
+code --install-extension unigo-lang-0.1.0.vsix
 ```
 
 ## 开发
 
-语法由 `scripts/build-grammar.js` 生成 `syntaxes/garnet.tmLanguage.json`，不要直接改 JSON。
+语法由 `scripts/build-grammar.js` 生成 `syntaxes/unigo.tmLanguage.json`，不要直接改 JSON。
 
 ```sh
 npm test                 # 重新生成语法并用 vscode-textmate 跑分词断言
-node test/tokenize.js -v # 打印 test/sample.gn 每个 token 的 scope
+node test/tokenize.js -v # 打印 test/sample.ug 每个 token 的 scope
 ```
 
-在 VS Code 里按 F5（扩展开发宿主）打开任意 `.gn` 文件即可预览。
+在 VS Code 里按 F5（扩展开发宿主）打开任意 `.ug` 文件即可预览。

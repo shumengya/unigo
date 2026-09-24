@@ -7,10 +7,10 @@ import (
 	"go/types"
 	"unicode/utf8"
 
-	"garnet/compiler/ast"
-	"garnet/compiler/diag"
-	"garnet/compiler/names"
-	"garnet/compiler/token"
+	"unigo/compiler/ast"
+	"unigo/compiler/diag"
+	"unigo/compiler/names"
+	"unigo/compiler/token"
 )
 
 const (
@@ -83,7 +83,7 @@ func newChecker(file *ast.File) *Checker {
 	if file != nil && file.Package != nil && file.Package.Name != "" {
 		pkgName = file.Package.Name
 	}
-	tpkg := types.NewPackage("garnet/out", pkgName)
+	tpkg := types.NewPackage("unigo/out", pkgName)
 	sc := &scope{objs: map[string]*Object{}}
 	info := newInfo()
 	info.Pkg = tpkg
@@ -116,8 +116,8 @@ func (c *Checker) checkName(name string, pos token.Position) {
 	if name == "" || name == "_bad" {
 		return
 	}
-	if len(name) >= len("garnetBind") && name[:len("garnetBind")] == "garnetBind" {
-		c.error(pos, "名字不能以 garnetBind 开头")
+	if len(name) >= len("unigoBind") && name[:len("unigoBind")] == "unigoBind" {
+		c.error(pos, "名字不能以 unigoBind 开头")
 	}
 	if utf8.RuneCountInString(name) < 2 {
 		c.error(pos, "名字至少要两个字符")

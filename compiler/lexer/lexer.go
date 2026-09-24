@@ -5,8 +5,8 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"garnet/compiler/diag"
-	"garnet/compiler/token"
+	"unigo/compiler/diag"
+	"unigo/compiler/token"
 )
 
 var keywords = map[string]token.Kind{

@@ -3,9 +3,9 @@ package check
 import (
 	"go/types"
 
-	"garnet/compiler/ast"
-	"garnet/compiler/names"
-	"garnet/compiler/token"
+	"unigo/compiler/ast"
+	"unigo/compiler/names"
+	"unigo/compiler/token"
 )
 
 func (c *Checker) checkExpr(e ast.Expr) types.Type {

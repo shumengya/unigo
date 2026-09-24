@@ -1,12 +1,12 @@
 {
-  "name": "tree-sitter-garnet",
+  "name": "tree-sitter-unigo",
   "version": "0.1.0",
-  "description": "Garnet grammar for tree-sitter",
+  "description": "UniGo grammar for tree-sitter",
   "main": "bindings/node",
   "keywords": [
     "tree-sitter",
     "parser",
-    "garnet"
+    "unigo"
   ],
   "license": "MIT",
   "devDependencies": {

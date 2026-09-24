@@ -1,7 +1,7 @@
 {
-  "name": "garnet-lang",
-  "displayName": "Garnet",
-  "description": "Garnet (.gn) 语言支持：语法高亮、括号匹配、注释、缩进",
+  "name": "unigo-lang",
+  "displayName": "UniGo",
+  "description": "UniGo (.ug) 语言支持：语法高亮、括号匹配、注释、缩进",
   "version": "0.1.0",
   "publisher": "shumengya",
   "license": "MIT",
@@ -12,38 +12,38 @@
     "Programming Languages"
   ],
   "keywords": [
-    "garnet",
-    "gn"
+    "unigo",
+    "ug"
   ],
   "contributes": {
     "languages": [
       {
-        "id": "garnet",
+        "id": "unigo",
         "aliases": [
-          "Garnet",
-          "garnet"
+          "UniGo",
+          "unigo"
         ],
         "extensions": [
-          ".gn"
+          ".ug"
         ],
         "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
       {
-        "language": "garnet",
-        "scopeName": "source.garnet",
-        "path": "./syntaxes/garnet.tmLanguage.json"
+        "language": "unigo",
+        "scopeName": "source.unigo",
+        "path": "./syntaxes/unigo.tmLanguage.json"
       }
     ],
     "snippets": [
       {
-        "language": "garnet",
-        "path": "./snippets/garnet.json"
+        "language": "unigo",
+        "path": "./snippets/unigo.json"
       }
     ],
     "configurationDefaults": {
-      "[garnet]": {
+      "[unigo]": {
         "editor.insertSpaces": false,
         "editor.tabSize": 4
       }
@@ -60,7 +60,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shumengya/garnet",
+    "url": "https://github.com/shumengya/unigo",
     "directory": "editors/vscode"
   }
 }

@@ -8,10 +8,10 @@ go test ./...
 
 echo
 echo "== tree-sitter 语法测试 =="
-if [ -d editors/tree-sitter-garnet/node_modules ]; then
-    (cd editors/tree-sitter-garnet && npx tree-sitter test)
+if [ -d editors/tree-sitter-unigo/node_modules ]; then
+    (cd editors/tree-sitter-unigo && npx tree-sitter test)
 else
-    echo "跳过：先在 editors/tree-sitter-garnet 下执行 npm install"
+    echo "跳过：先在 editors/tree-sitter-unigo 下执行 npm install"
 fi
 
 echo

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"garnet/lsp/server"
+	"unigo/lsp/server"
 )
 
 func main() {

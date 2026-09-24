@@ -1,15 +1,15 @@
 {
   "grammars": [
     {
-      "name": "garnet",
-      "camelcase": "Garnet",
-      "title": "Garnet",
-      "scope": "source.garnet",
+      "name": "unigo",
+      "camelcase": "UniGo",
+      "title": "UniGo",
+      "scope": "source.unigo",
       "file-types": [
-        "gn"
+        "ug"
       ],
-      "injection-regex": "^garnet$",
-      "class-name": "TreeSitterGarnet",
+      "injection-regex": "^unigo$",
+      "class-name": "TreeSitterUnigo",
       "highlights": "queries/highlights.scm",
       "locals": "queries/locals.scm",
       "brackets": "queries/brackets.scm",
@@ -19,7 +19,7 @@
   "metadata": {
     "version": "0.1.0",
     "license": "MIT",
-    "description": "Garnet grammar for tree-sitter",
+    "description": "UniGo grammar for tree-sitter",
     "authors": [
       {
         "name": "shumengya",
@@ -27,7 +27,7 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/shumengya/garnet"
+      "repository": "https://github.com/shumengya/unigo"
     }
   }
 }

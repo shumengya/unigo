@@ -1,5 +1,5 @@
 /**
- * @file Garnet grammar for tree-sitter
+ * @file UniGo grammar for tree-sitter
  * @license MIT
  */
 
@@ -21,7 +21,7 @@ const commaSep = (rule) => optional(seq(rule, repeat(seq(',', rule)), optional('
 const commaSep1 = (rule) => seq(rule, repeat(seq(',', rule)), optional(','));
 
 module.exports = grammar({
-  name: 'garnet',
+  name: 'unigo',
 
   extras: $ => [/\s/, $.comment],
 

@@ -4,8 +4,8 @@ import (
 	gotok "go/token"
 	"go/types"
 
-	"garnet/compiler/ast"
-	"garnet/compiler/token"
+	"unigo/compiler/ast"
+	"unigo/compiler/token"
 )
 
 type ObjKind int

@@ -3,10 +3,10 @@ package parser
 import (
 	"fmt"
 
-	"garnet/compiler/ast"
-	"garnet/compiler/diag"
-	"garnet/compiler/lexer"
-	"garnet/compiler/token"
+	"unigo/compiler/ast"
+	"unigo/compiler/diag"
+	"unigo/compiler/lexer"
+	"unigo/compiler/token"
 )
 
 type Parser struct {

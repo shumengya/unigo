@@ -1,14 +1,14 @@
-id = "garnet"
-name = "Garnet"
+id = "unigo"
+name = "UniGo"
 version = "0.1.0"
 schema_version = 1
 authors = ["shumengya <mail@smyhub.com>"]
-description = "Garnet (.gn) language support: syntax highlighting, brackets, indentation, outline."
-repository = "https://github.com/shumengya/garnet"
+description = "UniGo (.ug) language support: syntax highlighting, brackets, indentation, outline."
+repository = "https://github.com/shumengya/unigo"
 
-[grammars.garnet]
-# 语法在主仓库的 editors/tree-sitter-garnet 目录下。
+[grammars.unigo]
+# 语法在主仓库的 editors/tree-sitter-unigo 目录下。
 # 改动语法并推送后，把 rev 更新为包含该改动的提交号。
-repository = "https://github.com/shumengya/garnet"
-path = "editors/tree-sitter-garnet"
+repository = "https://github.com/shumengya/unigo"
+path = "editors/tree-sitter-unigo"
 rev = "de6f4a830d1d48d2416b16b2946754d023ddd7cd"
