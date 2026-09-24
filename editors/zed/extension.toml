@@ -11,4 +11,4 @@ repository = "https://github.com/shumengya/garnet"
 # 改动语法并推送后，把 rev 更新为包含该改动的提交号。
 repository = "https://github.com/shumengya/garnet"
 path = "editors/tree-sitter-garnet"
-rev = "0851ac7ecd6fb9fd780f30bb63c4100e18f4c5cc"
+rev = "de6f4a830d1d48d2416b16b2946754d023ddd7cd"
