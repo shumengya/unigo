@@ -11,4 +11,4 @@ repository = "https://github.com/shumengya/unigo"
 # 改动语法并推送后，把 rev 更新为包含该改动的提交号。
 repository = "https://github.com/shumengya/unigo"
 path = "editors/tree-sitter-unigo"
-rev = "de6f4a830d1d48d2416b16b2946754d023ddd7cd"
+rev = "25b8f0e7d897f12d58be43a242605505d891e2cc"
