@@ -1,0 +1,66 @@
+{
+  "name": "garnet-lang",
+  "displayName": "Garnet",
+  "description": "Garnet (.gn) 语言支持：语法高亮、括号匹配、注释、缩进",
+  "version": "0.1.0",
+  "publisher": "shumengya",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "garnet",
+    "gn"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "garnet",
+        "aliases": [
+          "Garnet",
+          "garnet"
+        ],
+        "extensions": [
+          ".gn"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "garnet",
+        "scopeName": "source.garnet",
+        "path": "./syntaxes/garnet.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "garnet",
+        "path": "./snippets/garnet.json"
+      }
+    ],
+    "configurationDefaults": {
+      "[garnet]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4
+      }
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build-grammar.js",
+    "test": "node scripts/build-grammar.js && node test/tokenize.js",
+    "package": "node scripts/build-grammar.js && npx --yes @vscode/vsce package --allow-missing-repository"
+  },
+  "devDependencies": {
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shumengya/garnet",
+    "directory": "editors/vscode"
+  }
+}

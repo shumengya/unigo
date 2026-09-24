@@ -1,0 +1,58 @@
+package main;
+// <- keyword
+//      ^ namespace
+
+import fmt from "fmt";
+// <- keyword
+//     ^ namespace
+//         ^ keyword
+//              ^ string.special
+
+struct Student {
+// <- keyword.type
+//     ^ type
+	name :string;
+	// <- property
+	//    ^ type.builtin
+}
+
+func load(path :string) :error {
+// <- keyword.function
+//   ^ function
+//        ^ variable.parameter
+	var (data :byte[], err :error) = os.ReadFile(path) else return err;
+	// <- keyword
+	//   ^ variable
+	//         ^ type.builtin
+	//                                  ^ function.method.call
+	//                                                  ^ keyword.conditional
+	//                                                       ^ keyword.return
+	var item :Student = Student{name = "x"};
+	//        ^ type
+	//                  ^ type
+	//                          ^ property
+	switch (state) {
+	// <- keyword.conditional
+		case Status.ready {
+		// <- keyword.conditional
+		//          ^ property
+			return nil;
+			// <- keyword.return
+			//     ^ constant.builtin
+		}
+	}
+	while (count > 0) {
+	// <- keyword.repeat
+		count = count - 1;
+		//            ^ operator
+	}
+	delete(scores, "数学");
+	// <- function.builtin
+	return true;
+	//     ^ boolean
+}
+
+enum Status {
+	ready;
+	// <- constant
+}

@@ -1,0 +1,5 @@
+// error: 名字至少要两个字符
+package main;
+func main() {
+	var a :int = 1;
+}

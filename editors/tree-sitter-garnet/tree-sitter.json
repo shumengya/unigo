@@ -1,0 +1,33 @@
+{
+  "grammars": [
+    {
+      "name": "garnet",
+      "camelcase": "Garnet",
+      "title": "Garnet",
+      "scope": "source.garnet",
+      "file-types": [
+        "gn"
+      ],
+      "injection-regex": "^garnet$",
+      "class-name": "TreeSitterGarnet",
+      "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm",
+      "brackets": "queries/brackets.scm",
+      "indents": "queries/indents.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Garnet grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "shumengya",
+        "email": "mail@smyhub.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/shumengya/garnet"
+    }
+  }
+}

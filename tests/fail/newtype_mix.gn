@@ -1,0 +1,8 @@
+// error: 不能直接混算
+package main;
+newtype Celsius = float64;
+func main() {
+	var body :Celsius = 36.5;
+	var room :float64 = 1.0;
+	var sum :Celsius = body + room;
+}

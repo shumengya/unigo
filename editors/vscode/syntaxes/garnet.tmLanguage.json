@@ -1,0 +1,739 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Garnet",
+  "scopeName": "source.garnet",
+  "fileTypes": [
+    "gn"
+  ],
+  "patterns": [
+    {
+      "include": "#statements"
+    }
+  ],
+  "repository": {
+    "statements": {
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#strings"
+        },
+        {
+          "include": "#numbers"
+        },
+        {
+          "include": "#package-clause"
+        },
+        {
+          "include": "#import-declaration"
+        },
+        {
+          "include": "#struct-declaration"
+        },
+        {
+          "include": "#interface-declaration"
+        },
+        {
+          "include": "#enum-declaration"
+        },
+        {
+          "include": "#function-declaration"
+        },
+        {
+          "include": "#newtype-declaration"
+        },
+        {
+          "include": "#var-declaration"
+        },
+        {
+          "include": "#else-return"
+        },
+        {
+          "include": "#case-clause"
+        },
+        {
+          "include": "#keywords"
+        },
+        {
+          "include": "#annotated-name"
+        },
+        {
+          "include": "#composite-literal"
+        },
+        {
+          "include": "#field-initializer"
+        },
+        {
+          "include": "#calls"
+        },
+        {
+          "include": "#member-access"
+        },
+        {
+          "include": "#operators"
+        },
+        {
+          "include": "#punctuation"
+        },
+        {
+          "include": "#identifiers"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.garnet"
+            }
+          },
+          "end": "$",
+          "name": "comment.line.double-slash.garnet",
+          "patterns": [
+            {
+              "match": "(?<![\\p{L}\\p{Nd}_])(?:TODO|FIXME|XXX|NOTE|HACK)(?![\\p{L}\\p{Nd}_])",
+              "name": "keyword.codetag.notation.garnet"
+            }
+          ]
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "begin": "\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.garnet"
+            }
+          },
+          "end": "\"|$",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.garnet"
+            }
+          },
+          "name": "string.quoted.double.garnet",
+          "patterns": [
+            {
+              "match": "\\\\[ntr\\\\\"]",
+              "name": "constant.character.escape.garnet"
+            },
+            {
+              "match": "\\\\.",
+              "name": "invalid.illegal.unknown-escape.garnet"
+            }
+          ]
+        },
+        {
+          "begin": "`",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.garnet"
+            }
+          },
+          "end": "`",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.garnet"
+            }
+          },
+          "name": "string.quoted.other.raw.garnet"
+        },
+        {
+          "match": "'[^'\\n]*'?",
+          "name": "invalid.illegal.character-literal.garnet"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])[0-9]+(?:\\.[0-9]+(?:[eE][+-]?[0-9]+)?|[eE][+-]?[0-9]+)(?![\\p{L}\\p{Nd}_])",
+          "name": "constant.numeric.float.garnet"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])[0-9]+(?![\\p{L}\\p{Nd}_])",
+          "name": "constant.numeric.integer.garnet"
+        }
+      ]
+    },
+    "package-clause": {
+      "match": "(?<![\\p{L}\\p{Nd}_])(package)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)",
+      "captures": {
+        "1": {
+          "name": "keyword.other.package.garnet"
+        },
+        "2": {
+          "name": "entity.name.namespace.garnet"
+        }
+      }
+    },
+    "import-declaration": {
+      "match": "(?<![\\p{L}\\p{Nd}_])(import)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s+(from)(?![\\p{L}\\p{Nd}_])\\s*(\"[^\"\\n]*\")",
+      "captures": {
+        "1": {
+          "name": "keyword.other.import.garnet"
+        },
+        "2": {
+          "name": "entity.name.namespace.garnet"
+        },
+        "3": {
+          "name": "keyword.other.from.garnet"
+        },
+        "4": {
+          "name": "string.quoted.double.garnet"
+        }
+      }
+    },
+    "struct-declaration": {
+      "begin": "(?<![\\p{L}\\p{Nd}_])(struct)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(\\{)",
+      "beginCaptures": {
+        "1": {
+          "name": "storage.type.struct.garnet"
+        },
+        "2": {
+          "name": "entity.name.type.garnet"
+        },
+        "3": {
+          "name": "punctuation.section.braces.begin.garnet"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.braces.end.garnet"
+        }
+      },
+      "name": "meta.struct.garnet",
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
+          "captures": {
+            "1": {
+              "name": "variable.other.property.garnet"
+            },
+            "2": {
+              "name": "punctuation.separator.type.garnet"
+            },
+            "3": {
+              "name": "meta.type.garnet",
+              "patterns": [
+                {
+                  "include": "#type-expression"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "include": "#punctuation"
+        }
+      ]
+    },
+    "interface-declaration": {
+      "begin": "(?<![\\p{L}\\p{Nd}_])(interface)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(\\{)",
+      "beginCaptures": {
+        "1": {
+          "name": "storage.type.interface.garnet"
+        },
+        "2": {
+          "name": "entity.name.type.garnet"
+        },
+        "3": {
+          "name": "punctuation.section.braces.begin.garnet"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.braces.end.garnet"
+        }
+      },
+      "name": "meta.interface.garnet",
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#function-declaration"
+        },
+        {
+          "include": "#punctuation"
+        }
+      ]
+    },
+    "enum-declaration": {
+      "begin": "(?<![\\p{L}\\p{Nd}_])(enum)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(\\{)",
+      "beginCaptures": {
+        "1": {
+          "name": "storage.type.enum.garnet"
+        },
+        "2": {
+          "name": "entity.name.type.garnet"
+        },
+        "3": {
+          "name": "punctuation.section.braces.begin.garnet"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.braces.end.garnet"
+        }
+      },
+      "name": "meta.enum.garnet",
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])[\\p{L}_][\\p{L}\\p{Nd}_]*(?![\\p{L}\\p{Nd}_])",
+          "name": "variable.other.enummember.garnet"
+        },
+        {
+          "include": "#punctuation"
+        }
+      ]
+    },
+    "function-declaration": {
+      "begin": "(?<![\\p{L}\\p{Nd}_])(func)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "storage.type.function.garnet"
+        },
+        "2": {
+          "name": "entity.name.function.garnet"
+        },
+        "3": {
+          "name": "punctuation.definition.parameters.begin.garnet"
+        }
+      },
+      "end": "(\\))(?:\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*)))?",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.parameters.end.garnet"
+        },
+        "2": {
+          "name": "punctuation.separator.type.garnet"
+        },
+        "3": {
+          "name": "meta.type.garnet",
+          "patterns": [
+            {
+              "include": "#type-expression"
+            }
+          ]
+        }
+      },
+      "name": "meta.function.garnet",
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
+          "captures": {
+            "1": {
+              "name": "variable.parameter.garnet"
+            },
+            "2": {
+              "name": "punctuation.separator.type.garnet"
+            },
+            "3": {
+              "name": "meta.type.garnet",
+              "patterns": [
+                {
+                  "include": "#type-expression"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.comma.garnet"
+        }
+      ]
+    },
+    "newtype-declaration": {
+      "match": "(?<![\\p{L}\\p{Nd}_])(newtype|alias)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(=)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
+      "captures": {
+        "1": {
+          "name": "storage.type.garnet"
+        },
+        "2": {
+          "name": "entity.name.type.garnet"
+        },
+        "3": {
+          "name": "keyword.operator.assignment.garnet"
+        },
+        "4": {
+          "name": "meta.type.garnet",
+          "patterns": [
+            {
+              "include": "#type-expression"
+            }
+          ]
+        }
+      }
+    },
+    "var-declaration": {
+      "patterns": [
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(var|const)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
+          "captures": {
+            "1": {
+              "name": "storage.type.garnet"
+            },
+            "2": {
+              "name": "variable.other.declaration.garnet"
+            },
+            "3": {
+              "name": "punctuation.separator.type.garnet"
+            },
+            "4": {
+              "name": "meta.type.garnet",
+              "patterns": [
+                {
+                  "include": "#type-expression"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "begin": "(?<![\\p{L}\\p{Nd}_])(var)(?![\\p{L}\\p{Nd}_])\\s*(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.type.garnet"
+            },
+            "2": {
+              "name": "punctuation.section.parens.begin.garnet"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.parens.end.garnet"
+            }
+          },
+          "name": "meta.var.multiple.garnet",
+          "patterns": [
+            {
+              "match": "(?<![\\p{L}\\p{Nd}_])([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
+              "captures": {
+                "1": {
+                  "name": "variable.other.declaration.garnet"
+                },
+                "2": {
+                  "name": "punctuation.separator.type.garnet"
+                },
+                "3": {
+                  "name": "meta.type.garnet",
+                  "patterns": [
+                    {
+                      "include": "#type-expression"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "match": ",",
+              "name": "punctuation.separator.comma.garnet"
+            }
+          ]
+        }
+      ]
+    },
+    "else-return": {
+      "match": "(?<![\\p{L}\\p{Nd}_])(else)(?![\\p{L}\\p{Nd}_])\\s+(return)(?![\\p{L}\\p{Nd}_])",
+      "captures": {
+        "1": {
+          "name": "keyword.control.garnet"
+        },
+        "2": {
+          "name": "keyword.control.flow.garnet"
+        }
+      }
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:if|elif|else|switch|case|default)(?![\\p{L}\\p{Nd}_])",
+          "name": "keyword.control.garnet"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:while|for)(?![\\p{L}\\p{Nd}_])",
+          "name": "keyword.control.loop.garnet"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:return)(?![\\p{L}\\p{Nd}_])",
+          "name": "keyword.control.flow.garnet"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:package|import|from)(?![\\p{L}\\p{Nd}_])",
+          "name": "keyword.other.import.garnet"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:var|const)(?![\\p{L}\\p{Nd}_])",
+          "name": "storage.type.garnet"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:func)(?![\\p{L}\\p{Nd}_])",
+          "name": "storage.type.function.garnet"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:enum|struct|interface|newtype|alias|map)(?![\\p{L}\\p{Nd}_])",
+          "name": "storage.type.garnet"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:true|false)(?![\\p{L}\\p{Nd}_])",
+          "name": "constant.language.boolean.garnet"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:nil)(?![\\p{L}\\p{Nd}_])",
+          "name": "constant.language.null.garnet"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:fallthrough|iota|class|new|extends|implements|type)(?![\\p{L}\\p{Nd}_])",
+          "name": "invalid.illegal.forbidden.garnet"
+        }
+      ]
+    },
+    "case-clause": {
+      "match": "(?<![\\p{L}\\p{Nd}_])(case)(?![\\p{L}\\p{Nd}_])\\s+([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(\\.)\\s*([\\p{L}_][\\p{L}\\p{Nd}_]*)",
+      "captures": {
+        "1": {
+          "name": "keyword.control.garnet"
+        },
+        "2": {
+          "name": "entity.name.type.enum.garnet"
+        },
+        "3": {
+          "name": "punctuation.accessor.garnet"
+        },
+        "4": {
+          "name": "variable.other.enummember.garnet"
+        }
+      }
+    },
+    "annotated-name": {
+      "match": "(?<![\\p{L}\\p{Nd}_])([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(:)\\s*((?:\\*[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?|map\\s*\\[[^\\]\\n]*\\](?:\\[\\])*|[\\p{L}_][\\p{L}\\p{Nd}_]*(?:\\.[\\p{L}_][\\p{L}\\p{Nd}_]*)?(?:\\[\\])*))",
+      "captures": {
+        "1": {
+          "name": "variable.other.garnet"
+        },
+        "2": {
+          "name": "punctuation.separator.type.garnet"
+        },
+        "3": {
+          "name": "meta.type.garnet",
+          "patterns": [
+            {
+              "include": "#type-expression"
+            }
+          ]
+        }
+      }
+    },
+    "composite-literal": {
+      "match": "(?<![\\p{L}\\p{Nd}_])(?!(?:package|import|from|var|const|func|if|else|elif|while|for|switch|case|default|enum|struct|interface|newtype|alias|return|map|true|false|nil)(?![\\p{L}\\p{Nd}_]))([\\p{L}_][\\p{L}\\p{Nd}_]*)(?=\\{)",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.garnet"
+        }
+      }
+    },
+    "field-initializer": {
+      "match": "([{,])\\s*([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(?==(?!=))",
+      "captures": {
+        "1": {
+          "name": "punctuation.separator.garnet"
+        },
+        "2": {
+          "name": "variable.other.property.garnet"
+        }
+      }
+    },
+    "calls": {
+      "patterns": [
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(delete|len|cap|append|copy|panic|print|println|make|min|max|clear)\\s*(?=\\()",
+          "captures": {
+            "1": {
+              "name": "support.function.builtin.garnet"
+            }
+          }
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(bool|byte|rune|string|error|any|int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|uintptr|float32|float64|complex64|complex128)\\s*(?=\\()",
+          "captures": {
+            "1": {
+              "name": "support.type.garnet"
+            }
+          }
+        },
+        {
+          "match": "(\\.)\\s*([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(?=\\()",
+          "captures": {
+            "1": {
+              "name": "punctuation.accessor.garnet"
+            },
+            "2": {
+              "name": "entity.name.function.member.garnet"
+            }
+          }
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?!(?:package|import|from|var|const|func|if|else|elif|while|for|switch|case|default|enum|struct|interface|newtype|alias|return|map|true|false|nil)(?![\\p{L}\\p{Nd}_]))([\\p{L}_][\\p{L}\\p{Nd}_]*)\\s*(?=\\()",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.garnet"
+            }
+          }
+        }
+      ]
+    },
+    "member-access": {
+      "match": "(\\.)\\s*([\\p{L}_][\\p{L}\\p{Nd}_]*)",
+      "captures": {
+        "1": {
+          "name": "punctuation.accessor.garnet"
+        },
+        "2": {
+          "name": "variable.other.property.garnet"
+        }
+      }
+    },
+    "type-expression": {
+      "patterns": [
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:map)(?![\\p{L}\\p{Nd}_])",
+          "name": "storage.type.map.garnet"
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])(?:bool|byte|rune|string|error|any|int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|uintptr|float32|float64|complex64|complex128)(?![\\p{L}\\p{Nd}_])",
+          "name": "support.type.garnet"
+        },
+        {
+          "match": "([\\p{L}_][\\p{L}\\p{Nd}_]*)(\\.)([\\p{L}_][\\p{L}\\p{Nd}_]*)",
+          "captures": {
+            "1": {
+              "name": "entity.name.namespace.garnet"
+            },
+            "2": {
+              "name": "punctuation.accessor.garnet"
+            },
+            "3": {
+              "name": "entity.name.type.garnet"
+            }
+          }
+        },
+        {
+          "match": "(?<![\\p{L}\\p{Nd}_])[\\p{L}_][\\p{L}\\p{Nd}_]*(?![\\p{L}\\p{Nd}_])",
+          "name": "entity.name.type.garnet"
+        },
+        {
+          "match": "\\*",
+          "name": "keyword.operator.pointer.garnet"
+        },
+        {
+          "match": "\\[|\\]",
+          "name": "punctuation.section.brackets.garnet"
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.comma.garnet"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "match": ":=",
+          "name": "invalid.illegal.short-assign.garnet"
+        },
+        {
+          "match": "/\\*|\\*/",
+          "name": "invalid.illegal.block-comment.garnet"
+        },
+        {
+          "match": "\\|\\||&&|!(?!=)",
+          "name": "keyword.operator.logical.garnet"
+        },
+        {
+          "match": "==|!=|<=|>=|<|>",
+          "name": "keyword.operator.comparison.garnet"
+        },
+        {
+          "match": "[+\\-*/%]",
+          "name": "keyword.operator.arithmetic.garnet"
+        },
+        {
+          "match": "&",
+          "name": "keyword.operator.address.garnet"
+        },
+        {
+          "match": "=",
+          "name": "keyword.operator.assignment.garnet"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "match": "\\(",
+          "name": "punctuation.section.parens.begin.garnet"
+        },
+        {
+          "match": "\\)",
+          "name": "punctuation.section.parens.end.garnet"
+        },
+        {
+          "match": "\\{",
+          "name": "punctuation.section.braces.begin.garnet"
+        },
+        {
+          "match": "\\}",
+          "name": "punctuation.section.braces.end.garnet"
+        },
+        {
+          "match": "\\[",
+          "name": "punctuation.section.brackets.begin.garnet"
+        },
+        {
+          "match": "\\]",
+          "name": "punctuation.section.brackets.end.garnet"
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.comma.garnet"
+        },
+        {
+          "match": ";",
+          "name": "punctuation.terminator.statement.garnet"
+        },
+        {
+          "match": ":",
+          "name": "punctuation.separator.colon.garnet"
+        },
+        {
+          "match": "\\.",
+          "name": "punctuation.accessor.garnet"
+        }
+      ]
+    },
+    "identifiers": {
+      "match": "(?<![\\p{L}\\p{Nd}_])[\\p{L}_][\\p{L}\\p{Nd}_]*(?![\\p{L}\\p{Nd}_])",
+      "name": "variable.other.garnet"
+    }
+  }
+}

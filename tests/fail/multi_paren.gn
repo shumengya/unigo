@@ -1,0 +1,6 @@
+// error: 多个值必须放进圆括号
+package main;
+import os from "os";
+func main() {
+	var data :byte[], err :error = os.ReadFile("a");
+}

@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.wasm binary
+*.png binary
+
+# tree-sitter generate 生成的文件
+editors/tree-sitter-garnet/src/** linguist-generated
+editors/vscode/syntaxes/garnet.tmLanguage.json linguist-generated

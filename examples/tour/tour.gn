@@ -1,0 +1,209 @@
+// Garnet 当前格式示例
+//
+// 这里只放已经定下的写法。
+// 能导入并调用 Go 的包和函数。源码按下面这一种格式写。
+// 语句以分号结束。注释只有 //。
+// 类型都写在后面。只有一次接收两个及以上的值时才用圆括号。
+// 只接收一个值时禁止加括号。error 可以省略。Garnet 自己的函数只能有一个返回值。
+// 禁止 var data :byte[], err :error = os.ReadFile(path);
+// 禁止 func readFile(path :string) :(data :byte[], err :error) {}
+// 类型后置只能写成 名字 :类型。冒号紧贴类型，禁止 名字: 类型。
+// 变量和函数名：纯英文或数字至少两个字符，禁止 a，允许 ab、a2、abc。
+// 中文或其他字符至少两个字符，禁止 阿，允许 世界。
+// 少于这个长度直接编译不通过。
+
+package main;
+
+// 导入：一行一条，必须写成 import 名字 from "路径";
+// package 和 import 结尾都必须写分号，不写编译不通过。
+import fmt from "fmt";
+import os from "os";
+import json from "encoding/json";
+import png from "image/png";
+
+// 没有返回值时，参数列表后面不写冒号。
+func main() {
+	// 常量：const 名字 :类型 = 值;
+	const tStr :string = "hello";
+
+	// 变量：var 名字 :类型 = 值;
+	var num :int = 520;
+	var str1 :string = "这是字串符";
+	var 世界 :string = "你好";
+	var ready :bool = true;
+	var ratio :float64 = 3.14;
+
+	// 调用只返回一个类型的函数。
+	var err :error = load("a.txt");
+	var count :int = parse("520");
+	var raw :json.RawMessage = json.RawMessage(`{"ok":true}`);
+	var item :Student = makeStudent(str1, num);
+	var student :string = printStudent(item.name);
+	var words :string[] = ["awd", "adwa", "awdawd"];
+	var scores :map[string, int] = {"语文": 90, "数学": 86};
+	var score :int = scores["语文"];
+	var (mathScore :int, found :bool) = scores["数学"];
+	scores["语文"] = 100;
+	delete(scores, "数学");
+	var source :string = `{"id":"stu-001","name":"树萌芽","age":18,"room":{"title":"一班","building":"东楼"},"courses":[{"name":"语文","score":90},{"name":"数学","score":86}]}`;
+	var parsed :Student = parseStudent(source);
+	var title :string = parsed.room.title;
+	var parser :StudentParser = jsonParser();
+	var again :Student = parser.parse(source);
+	var shown :error = show(num, str1, 世界, ready, ratio, err, count, raw, student, tStr);
+	var body :Celsius = 36.5;
+	var absolute :Kelvin = 309.65;
+	var same :float64 = absolute;
+
+	// if (条件) {}
+	if (ready) {
+		var mark :string = "yes";
+	}
+
+	// if (条件) {} else {}
+	if (num > 0) {
+		var markYes :string = "yes";
+	} else {
+		var markNo :string = "no";
+	}
+
+	// if (条件) {} elif (条件) {}
+	if (num > 10) {
+		var levelLarge :string = "large";
+	} elif (num > 0) {
+		var levelSmall :string = "small";
+	} else {
+		var levelOther :string = "other";
+	}
+
+	// while (条件) {} 已声明的变量用赋值修改，不重复写类型。
+	while (count > 0) {
+		count = count - 1;
+	}
+
+	// for (条件) {}
+	count = 2;
+	for (count > 0) {
+		count = count - 1;
+	}
+
+	// 非枚举 switch 必须写 default。
+	switch (num) {
+		case 520 {
+			var foundYes :string = "yes";
+		}
+		default {
+			var foundNo :string = "no";
+		}
+	}
+
+	var state :Status = Status.ready;
+	var label :string = statusText(state);
+}
+
+// 枚举是独立类型，成员用类型名点出来。
+enum Status {
+	ready;
+	failed;
+	empty;
+}
+
+// 枚举 switch 必须列全成员，不能写 default，也不能 fallthrough。
+func statusText(state :Status) :string {
+	switch (state) {
+		case Status.ready {
+			return "ready";
+		}
+		case Status.failed {
+			return "failed";
+		}
+		case Status.empty {
+			return "empty";
+		}
+	}
+}
+
+// 新类型：和原来的类型不能直接混算。
+newtype Celsius = float64;
+
+// 别名：和原来的类型是同一个类型。
+alias Kelvin = float64;
+
+// 结构体只放字段。小结构体放进大结构体的字段里，这就是组合。
+struct Course {
+	name :string;
+	score :int;
+}
+
+struct ClassRoom {
+	title :string;
+	building :string;
+}
+
+struct Student {
+	id :string;
+	name :string;
+	age :int;
+	room :ClassRoom;
+	courses :Course[];
+}
+
+// 没写的字段是零值。
+func makeStudent(studentName :string, studentAge :int) :Student {
+	var item :Student = Student{name = studentName, age = studentAge};
+	return item;
+}
+
+// JSON 字段名就是结构体字段名。失败时返回零值。
+func parseStudent(raw :string) :Student {
+	var item :Student = Student{};
+	var err :error = json.Unmarshal(raw, &item) else return Student{};
+	return item;
+}
+
+// 接口只放函数，是插件插口。
+interface StudentParser {
+	func parse(raw :string) :Student;
+}
+
+// 组装一个 JSON 解析插件。换这个函数，就是换一种解析实现。
+func jsonParser() :StudentParser {
+	return StudentParser{
+		func parse(raw :string) :Student {
+			return parseStudent(raw);
+		};
+	};
+}
+
+// 参数是名字 :类型。返回类型只有一个，写在参数列表后面。
+func printStudent(student :string) :string {
+	return student;
+}
+
+// 失败就返回，写在调用同一行末尾。
+func load(path :string) :error {
+	var (data :byte[], err :error) = os.ReadFile(path) else return err;
+	var (file :*os.File, openErr :error) = os.Open(path) else return openErr;
+	var written :int = fmt.Println(data) else return;
+	var closed :error = file.Close() else return closed;
+	return nil;
+}
+
+// 省略 error 时，else return 表示返回那个 error。
+func openPipe() :error {
+	var (reader :*os.File, writer :*os.File) = os.Pipe() else return;
+	var closed :error = writer.Close() else return closed;
+	return nil;
+}
+
+// 只返回一个类型。
+func parse(raw :string) :int {
+	var count :int = 520;
+	return count;
+}
+
+// 只接收一个值，失败时返回被省略的 error。
+func show(num :int, text :string, 世界 :string, ready :bool, ratio :float64, err :error, count :int, raw :json.RawMessage, student :string, tStr :string) :error {
+	var written :int = fmt.Println(num, text, 世界, ready, ratio, err, count, raw, student, tStr) else return;
+	return nil;
+}

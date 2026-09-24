@@ -1,0 +1,10 @@
+// error: 参数类型不符
+package main;
+
+func double(num :int) :int {
+	return num * 2;
+}
+
+func main() {
+	var result :int = double("520");
+}

@@ -1,0 +1,92 @@
+{
+  "package": {
+    "prefix": "package",
+    "body": ["package ${1:main};", "$0"],
+    "description": "package 声明"
+  },
+  "import": {
+    "prefix": "import",
+    "body": ["import ${1:fmt} from \"${2:$1}\";"],
+    "description": "import 名字 from \"路径\";"
+  },
+  "func": {
+    "prefix": "func",
+    "body": ["func ${1:name}(${2}) :${3:error} {", "\t$0", "}"],
+    "description": "函数（带返回值）"
+  },
+  "func main": {
+    "prefix": "main",
+    "body": ["func main() {", "\t$0", "}"],
+    "description": "main 函数"
+  },
+  "var": {
+    "prefix": "var",
+    "body": ["var ${1:name} :${2:string} = ${3:value};"],
+    "description": "变量声明"
+  },
+  "var multiple": {
+    "prefix": "varm",
+    "body": ["var (${1:data} :${2:byte[]}, ${3:err} :error) = ${4:os.ReadFile(path)} else return ${5:err};"],
+    "description": "接收多个返回值，失败就返回"
+  },
+  "const": {
+    "prefix": "const",
+    "body": ["const ${1:name} :${2:string} = ${3:value};"],
+    "description": "常量声明"
+  },
+  "if": {
+    "prefix": "if",
+    "body": ["if (${1:cond}) {", "\t$0", "}"],
+    "description": "if"
+  },
+  "if else": {
+    "prefix": "ife",
+    "body": ["if (${1:cond}) {", "\t$2", "} else {", "\t$0", "}"],
+    "description": "if / else"
+  },
+  "elif": {
+    "prefix": "elif",
+    "body": ["elif (${1:cond}) {", "\t$0", "}"],
+    "description": "elif 分支"
+  },
+  "while": {
+    "prefix": "while",
+    "body": ["while (${1:cond}) {", "\t$0", "}"],
+    "description": "while 循环"
+  },
+  "for": {
+    "prefix": "for",
+    "body": ["for (${1:cond}) {", "\t$0", "}"],
+    "description": "for 循环"
+  },
+  "switch": {
+    "prefix": "switch",
+    "body": ["switch (${1:value}) {", "\tcase ${2:value} {", "\t\t$3", "\t}", "\tdefault {", "\t\t$0", "\t}", "}"],
+    "description": "switch（非枚举必须写 default）"
+  },
+  "struct": {
+    "prefix": "struct",
+    "body": ["struct ${1:Name} {", "\t${2:field} :${3:string};", "}"],
+    "description": "结构体"
+  },
+  "interface": {
+    "prefix": "interface",
+    "body": ["interface ${1:Name} {", "\tfunc ${2:method}(${3}) :${4:string};", "}"],
+    "description": "接口"
+  },
+  "enum": {
+    "prefix": "enum",
+    "body": ["enum ${1:Name} {", "\t${2:first};", "\t${3:second};", "}"],
+    "description": "枚举"
+  },
+  "newtype": {
+    "prefix": "newtype",
+    "body": ["newtype ${1:Name} = ${2:float64};"],
+    "description": "新类型"
+  },
+  "alias": {
+    "prefix": "alias",
+    "body": ["alias ${1:Name} = ${2:float64};"],
+    "description": "类型别名"
+  }
+}

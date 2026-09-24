@@ -1,0 +1,15 @@
+name = "Garnet"
+grammar = "garnet"
+path_suffixes = ["gn"]
+line_comments = ["// "]
+tab_size = 4
+hard_tabs = true
+autoclose_before = ";:.,=}])"
+brackets = [
+    { start = "{", end = "}", close = true, newline = true },
+    { start = "[", end = "]", close = true, newline = true },
+    { start = "(", end = ")", close = true, newline = true },
+    { start = "\"", end = "\"", close = true, newline = false, not_in = ["string", "comment"] },
+    { start = "`", end = "`", close = true, newline = false, not_in = ["string", "comment"] },
+]
+word_characters = ["_"]

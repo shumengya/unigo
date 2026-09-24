@@ -1,0 +1,6 @@
+// error: 只接收一个值时不能加括号
+package main;
+import fmt from "fmt";
+func main() {
+	var (written :int) = fmt.Println("hi");
+}

@@ -1,0 +1,9 @@
+# 构建产物
+bin/
+*.exe
+garnet-out/
+editors/*/node_modules/
+editors/vscode/*.vsix
+editors/tree-sitter-garnet/tree-sitter.exe
+editors/tree-sitter-garnet/target/
+*.wasm

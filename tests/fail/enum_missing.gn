@@ -1,0 +1,14 @@
+// error: 枚举 switch 没有列全成员
+package main;
+enum Status {
+	ready;
+	failed;
+}
+func main() {
+	var state :Status = Status.ready;
+	switch (state) {
+		case Status.ready {
+			var ok :string = "a";
+		}
+	}
+}

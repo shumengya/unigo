@@ -1,0 +1,3 @@
+// error: 函数只能有一个返回值
+package main;
+func read() :(data :byte[], err :error) {}

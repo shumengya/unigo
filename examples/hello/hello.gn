@@ -1,0 +1,13 @@
+package main;
+
+import fmt from "fmt";
+
+struct Student {
+	name :string;
+	age :int;
+}
+
+func main() {
+	var item :Student = Student{name = "树萌芽", age = 18};
+	var written :int = fmt.Println("你好,", item.name);
+}

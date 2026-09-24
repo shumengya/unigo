@@ -1,0 +1,4 @@
+// error: 导入必须写成 import 名字 from
+package main;
+import "fmt";
+func main() {}

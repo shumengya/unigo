@@ -1,0 +1,7 @@
+// error: 函数返回类型不是 error 时不能写 else return
+package main;
+import os from "os";
+func load() :int {
+	var data :byte[] = os.ReadFile("a") else return;
+	return 0;
+}

@@ -1,0 +1,19 @@
+// error: 枚举 switch 不能写 default
+package main;
+enum Status {
+	ready;
+	failed;
+}
+func text(state :Status) :string {
+	switch (state) {
+		case Status.ready {
+			return "a";
+		}
+		case Status.failed {
+			return "b";
+		}
+		default {
+			return "c";
+		}
+	}
+}

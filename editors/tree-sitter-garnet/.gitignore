@@ -1,0 +1,11 @@
+node_modules/
+target/
+build/
+*.wasm
+*.dll
+*.so
+*.dylib
+*.exp
+*.lib
+*.obj
+tree-sitter.exe

@@ -1,0 +1,8 @@
+// 字面量可以直接传给 Go 的 ...any 参数（如 fmt.Println）。
+package main;
+
+import fmt from "fmt";
+
+func main() {
+	var written :int = fmt.Println("你好", 520, 3.14, true, nil);
+}

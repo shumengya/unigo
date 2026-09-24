@@ -1,0 +1,285 @@
+==================
+package 和 import
+==================
+
+package main;
+import fmt from "fmt";
+import json from "encoding/json";
+
+---
+
+(source_file
+  (package_clause (identifier))
+  (import_declaration (identifier) (string))
+  (import_declaration (identifier) (string)))
+
+==================
+变量与常量
+==================
+
+var num :int = 520;
+const tStr :string = "hello";
+var 世界 :string = "你好";
+var scores :map[string, int] = {};
+var words :string[] = ["awd", "adwa"];
+
+---
+
+(source_file
+  (var_declaration
+    (var_spec (identifier) (type_annotation (type_identifier)))
+    (int_literal))
+  (const_declaration (identifier) (type_annotation (type_identifier)) (string))
+  (var_declaration
+    (var_spec (identifier) (type_annotation (type_identifier)))
+    (string))
+  (var_declaration
+    (var_spec (identifier) (type_annotation (map_type (type_identifier) (type_identifier))))
+    (map_literal))
+  (var_declaration
+    (var_spec (identifier) (type_annotation (slice_type (type_identifier))))
+    (slice_literal (string) (string))))
+
+==================
+多个返回值与 else return
+==================
+
+var (data :byte[], err :error) = os.ReadFile(path) else return err;
+
+---
+
+(source_file
+  (var_declaration
+    (var_spec_list
+      (var_spec (identifier) (type_annotation (slice_type (type_identifier))))
+      (var_spec (identifier) (type_annotation (type_identifier))))
+    (call_expression
+      (selector_expression (identifier) (identifier))
+      (argument_list (identifier)))
+    (else_return (identifier))))
+
+==================
+函数
+==================
+
+func printStudent(student :string) :string {
+	return student;
+}
+
+func main() {
+}
+
+---
+
+(source_file
+  (function_declaration
+    (identifier)
+    (parameter_list (parameter (identifier) (type_annotation (type_identifier))))
+    (type_annotation (type_identifier))
+    (block (return_statement (identifier))))
+  (function_declaration (identifier) (parameter_list) (block)))
+
+==================
+结构体、接口、枚举、新类型与别名
+==================
+
+struct Student {
+	name :string;
+	age :int;
+}
+
+interface StudentParser {
+	func parse(raw :string) :Student;
+}
+
+enum Status {
+	ready;
+	failed;
+}
+
+newtype Celsius = float64;
+alias Kelvin = float64;
+
+---
+
+(source_file
+  (struct_declaration
+    (type_identifier)
+    (field_list
+      (field_declaration (identifier) (type_annotation (type_identifier)))
+      (field_declaration (identifier) (type_annotation (type_identifier)))))
+  (interface_declaration
+    (type_identifier)
+    (method_list
+      (method_signature
+        (identifier)
+        (parameter_list (parameter (identifier) (type_annotation (type_identifier))))
+        (type_annotation (type_identifier)))))
+  (enum_declaration
+    (type_identifier)
+    (enum_body (enum_member (identifier)) (enum_member (identifier))))
+  (newtype_declaration (type_identifier) (type_identifier))
+  (alias_declaration (type_identifier) (type_identifier)))
+
+==================
+控制流
+==================
+
+func main() {
+	if (ready) {
+	} elif (num > 10) {
+	} else {
+	}
+	while (count > 0) {
+	}
+	for (count > 0) {
+	}
+	switch (num) {
+		case 520 {
+		}
+		default {
+		}
+	}
+}
+
+---
+
+(source_file
+  (function_declaration
+    (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        (condition (identifier))
+        (block)
+        (elif_clause (condition (binary_expression (identifier) (int_literal))) (block))
+        (else_clause (block)))
+      (while_statement (condition (binary_expression (identifier) (int_literal))) (block))
+      (for_statement (condition (binary_expression (identifier) (int_literal))) (block))
+      (switch_statement
+        (condition (identifier))
+        (switch_body
+          (case_clause (int_literal) (block))
+          (default_clause (block)))))))
+
+==================
+枚举 switch 与 case
+==================
+
+func statusText(state :Status) :string {
+	switch (state) {
+		case Status.ready {
+			return "ready";
+		}
+	}
+}
+
+---
+
+(source_file
+  (function_declaration
+    (identifier)
+    (parameter_list (parameter (identifier) (type_annotation (type_identifier))))
+    (type_annotation (type_identifier))
+    (block
+      (switch_statement
+        (condition (identifier))
+        (switch_body
+          (case_clause
+            (selector_expression (identifier) (identifier))
+            (block (return_statement (string)))))))))
+
+==================
+结构体字面量与接口组装
+==================
+
+func makeStudent(studentName :string) :Student {
+	var item :Student = Student{name = studentName, age = 18};
+	return item;
+}
+
+func jsonParser() :StudentParser {
+	return StudentParser{
+		func parse(raw :string) :Student {
+			return parseStudent(raw);
+		};
+	};
+}
+
+---
+
+(source_file
+  (function_declaration
+    (identifier)
+    (parameter_list (parameter (identifier) (type_annotation (type_identifier))))
+    (type_annotation (type_identifier))
+    (block
+      (var_declaration
+        (var_spec (identifier) (type_annotation (type_identifier)))
+        (composite_literal
+          (identifier)
+          (struct_body
+            (field_initializer (identifier) (identifier))
+            (field_initializer (identifier) (int_literal)))))
+      (return_statement (identifier))))
+  (function_declaration
+    (identifier)
+    (parameter_list)
+    (type_annotation (type_identifier))
+    (block
+      (return_statement
+        (composite_literal
+          (identifier)
+          (implementation_body
+            (method_implementation
+              (identifier)
+              (parameter_list (parameter (identifier) (type_annotation (type_identifier))))
+              (type_annotation (type_identifier))
+              (block (return_statement (call_expression (identifier) (argument_list (identifier))))))))))))
+
+==================
+注释与运算符
+==================
+
+// 只有这一种注释
+var num :int = 1 + 2 * 3;
+func load(path :string) :error {
+	if (ready && num > 0) {
+	}
+	var (file :*os.File, openErr :error) = os.Open(path) else return openErr;
+	var err :error = json.Unmarshal(raw, &item) else return;
+	return nil;
+}
+
+---
+
+(source_file
+  (comment)
+  (var_declaration
+    (var_spec (identifier) (type_annotation (type_identifier)))
+    (binary_expression
+      (int_literal)
+      (binary_expression (int_literal) (int_literal))))
+  (function_declaration
+    (identifier)
+    (parameter_list (parameter (identifier) (type_annotation (type_identifier))))
+    (type_annotation (type_identifier))
+    (block
+      (if_statement
+        (condition (binary_expression (identifier) (binary_expression (identifier) (int_literal))))
+        (block))
+      (var_declaration
+        (var_spec_list
+          (var_spec (identifier) (type_annotation (pointer_type (qualified_type (identifier) (identifier)))))
+          (var_spec (identifier) (type_annotation (type_identifier))))
+        (call_expression
+          (selector_expression (identifier) (identifier))
+          (argument_list (identifier)))
+        (else_return (identifier)))
+      (var_declaration
+        (var_spec (identifier) (type_annotation (type_identifier)))
+        (call_expression
+          (selector_expression (identifier) (identifier))
+          (argument_list (identifier) (unary_expression (identifier))))
+        (else_return))
+      (return_statement (nil)))))

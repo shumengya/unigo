@@ -1,0 +1,10 @@
+// error: switch 必须写 default
+package main;
+func main() {
+	var num :int = 1;
+	switch (num) {
+		case 1 {
+			var ok :string = "a";
+		}
+	}
+}
